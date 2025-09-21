@@ -17,7 +17,6 @@ public class Main {
     public boolean icyHot(int temp1, int temp2) {
         // TODO: write method body
          return (temp1 < 0 && temp2 > 100) || (temp1 > 100 && temp2 < 0);
-        return false;
     }
 
     /**
@@ -30,7 +29,6 @@ public class Main {
     public boolean in1020(int a, int b) {
         // TODO: write method body
         return (a >= 10 && a <= 20) || (b >= 10 && b <= 20);
-        return false;
     }
 
     /**
@@ -43,7 +41,7 @@ public class Main {
      */
     public boolean hasTeen(int a, int b, int c) {
         // TODO: write method body
-        return false;
+      return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19);
     }
 
     // ======== Boolean expressions ========
