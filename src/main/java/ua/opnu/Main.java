@@ -29,6 +29,7 @@ public class Main {
      */
     public boolean in1020(int a, int b) {
         // TODO: write method body
+        return (a >= 10 && a <= 20) || (b >= 10 && b <= 20);
         return false;
     }
 
