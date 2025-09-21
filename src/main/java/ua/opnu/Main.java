@@ -54,10 +54,13 @@ public class Main {
      * sleepIn(true, false) → false
      * sleepIn(false, true) → true
      */
-    public boolean sleepIn(boolean weekday, boolean vacation) {
-        // TODO: write method body
+   public boolean sleepIn(boolean weekday, boolean vacation) {
+    if (!weekday || vacation) {
+        return true;
+    } else {
         return false;
     }
+}
 
     /**
      * We have two monkeys, a and b, and the parameters aSmile and bSmile indicate if each is smiling.
@@ -67,10 +70,13 @@ public class Main {
      * monkeyTrouble(false, false) → true
      * monkeyTrouble(true, false) → false
      */
-    public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-        // TODO: write method body
+   public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
+    if ((aSmile && bSmile) || (!aSmile && !bSmile)) {
+        return true;
+    } else {
         return false;
     }
+}
 
     /**
      * Given 2 int values, return true if one is negative and one is positive. Except if the parameter "negative"
@@ -81,9 +87,22 @@ public class Main {
      * posNeg(-4, -5, true) → true
      */
     public boolean posNeg(int a, int b, boolean negative) {
-        // TODO: write method body
-        return false;
+    if (negative) {
+        // Повертаємо true, тільки якщо обидва числа від’ємні
+        if (a < 0 && b < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        // Повертаємо true, якщо одне число додатнє, а інше від’ємне
+        if ((a < 0 && b > 0) || (a > 0 && b < 0)) {
+            return true;
+        } else {
+            return false;
+        }
     }
+}
 
     // ======== Loops and Arrays ========
 
@@ -94,10 +113,15 @@ public class Main {
      * arrayCount9([1, 9, 9]) → 2
      * arrayCount9([1, 9, 9, 3, 9]) → 3
      */
-    public int arrayCount9(int[] nums) {
-        // TODO: write method body
-        return 0;
+public int arrayCount9(int[] nums) {
+    int count = 0; // лічильник дев'яток
+    for (int i = 0; i < nums.length; i++) {
+        if (nums[i] == 9) {
+            count++; // збільшуємо лічильник, якщо знайдено 9
+        }
     }
+    return count; // повертаємо результат
+}
 
     /**
      * Given an array of ints, return true if one of the first 4 elements in the array is a 9.
@@ -107,10 +131,23 @@ public class Main {
      * arrayFront9([1, 2, 3, 4, 9]) → false
      * arrayFront9([1, 2, 3, 4, 5]) → false
      */
-    public boolean arrayFront9(int[] nums) {
-        // TODO: write method body
-        return false;
+   public boolean arrayFront9(int[] nums) {
+    // Визначаємо, скільки елементів перевіряти – не більше 4
+    int end = nums.length;
+    if (end > 4) {
+        end = 4;
     }
+
+    // Проходимо перші елементи і перевіряємо на 9
+    for (int i = 0; i < end; i++) {
+        if (nums[i] == 9) {
+            return true; // знайшли 9 – повертаємо true
+        }
+    }
+
+    // Якщо 9 не знайдено
+    return false;
+}
 
     /**
      * Given an array of ints, return true if the sequence of numbers 1, 2, 3 appears in the array somewhere.
@@ -119,10 +156,16 @@ public class Main {
      * array123([1, 1, 2, 4, 1]) → false
      * array123([1, 1, 2, 1, 2, 3]) → true
      */
-    public boolean array123(int[] nums) {
-        // TODO: write method body
-        return false;
+   public boolean array123(int[] nums) {
+    // Перевіряємо послідовність 1,2,3 у масиві
+    for (int i = 0; i < nums.length - 2; i++) { // -2, бо перевіряємо i, i+1, i+2
+        if (nums[i] == 1 && nums[i + 1] == 2 && nums[i + 2] == 3) {
+            return true; // послідовність знайдена
+        }
     }
+    // Якщо цикл завершився без знаходження послідовності
+    return false;
+}
 
     // ======== Strings ========
 
@@ -133,10 +176,15 @@ public class Main {
      * helloName("Alice") → "Hello Alice!"
      * helloName("X") → "Hello X!"
      */
-    public String helloName(String name) {
-        // TODO: write method body
-        return null;
+   public String helloName(String name) {
+    // Перевіряємо, чи рядок не пустий
+    if (name != null && !name.isEmpty()) {
+        return "Hello " + name + "!";
+    } else {
+        // Якщо рядок пустий або null, повертаємо загальне привітання
+        return "Hello!";
     }
+}
 
     /**
      * Given a string of any length, return a new string where the last 2 chars, if present, are swapped, so "coding"
@@ -146,10 +194,21 @@ public class Main {
      * lastTwo("cat") → "cta"
      * lastTwo("ab") → "ba"
      */
-    public String lastTwo(String str) {
-        // TODO: write method body
-        return null;
+  public String lastTwo(String str) {
+    // Перевіряємо, чи рядок має хоча б 2 символи
+    if (str != null && str.length() >= 2) {
+        // Отримуємо частину рядка без останніх двох символів
+        String beginning = str.substring(0, str.length() - 2);
+        // Отримуємо два останні символи
+        char secondLast = str.charAt(str.length() - 2);
+        char last = str.charAt(str.length() - 1);
+        // Формуємо новий рядок з переставленими останніми двома символами
+        return beginning + last + secondLast;
+    } else {
+        // Якщо рядок менший за 2 символи, повертаємо його без змін
+        return str;
     }
+}
 
     /**
      * Given a string of even length, return a string made of the middle two chars, so the string "string" yields "ri".
@@ -158,10 +217,17 @@ public class Main {
      * middleTwo("code") → "od"
      * middleTwo("Practice") → "ct"
      */
-    public String middleTwo(String str) {
-        // TODO: write method body
-        return null;
+   public String middleTwo(String str) {
+    // Перевіряємо, що рядок не null і має парну довжину ≥ 2
+    if (str != null && str.length() >= 2 && str.length() % 2 == 0) {
+        int mid = str.length() / 2; // індекс середини
+        // Беремо два символи по центру
+        return str.substring(mid - 1, mid + 1);
+    } else {
+        // Якщо рядок не відповідає умовам, повертаємо його без змін
+        return str;
     }
+}
 
 
 }
